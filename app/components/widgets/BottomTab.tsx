@@ -11,6 +11,8 @@ import { Home } from '../screens/Home';
 import { Colors } from '@/app/constants/colors';
 import { PaymentDetail } from '../screens/PaymentDetail';
 import { PaymentMode } from '../screens/PaymentMode';
+import { StatistiqueScreen } from '../screens/StatistiqueScreen';
+import { HistoriqueScreen } from '../screens/HistoriqueScreen';
 
 
 
@@ -31,19 +33,11 @@ function Consulte() {
 }
 
 function Historik() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>En Developpement!</Text>
-    </View>
-  );
+  return <HistoriqueScreen />;
 }
 
 function Statistik() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>En Developpement!</Text>
-    </View>
-  );
+  return <StatistiqueScreen />;
 }
 
 const Tab = createBottomTabNavigator();
@@ -71,7 +65,7 @@ export function BottomTab({actif}:any) {
       />
       <Tab.Screen
         name="Payer"
-        component={PaymentDetail || PaymentMode}
+        component={PaymentDetail}
         options={{
           tabBarLabel: 'Payer',
           tabBarIcon: ({ color, size }) => (

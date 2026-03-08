@@ -1,34 +1,36 @@
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { HeaderWithText } from "../widgets/Header";
 import { CardMethod } from "../widgets/Cards";
 import { Colors } from "@/app/constants/colors";
 import { ButtonText } from "../widgets/Button";
-import { useNavigation } from '@react-navigation/native';
 
+const AMOUNT = "12 000 FCFA";
 
-
-export function PaymentMode({ navigation: { navigate } }:any){
-    const navigation = useNavigation();
-    const goBack= ()=>{
-        navigate('PaymentDetail')
+export function PaymentMode({ navigation }: any) {
+    const goBack = () => {
+        navigation.goBack()
     }
-    const onChange= ()=>{}
+    const goForm = (method: string) => {
+        navigation.navigate('PaymentForm', { method, amount: AMOUNT })
+    }
     return(
         <>
-            <HeaderWithText 
-            title={"Paiement"} 
-            icon={"bell-badge"} 
+            <HeaderWithText
+            title={"Paiement"}
+            icon={"bell-badge"}
             onChange={goBack}
             />
 
-            <View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={{ paddingBottom: 30 }}>
                 <CardMethod
-                top={50}
+                top={20}
                 title={"Orange Money"}
                 sub={"Mobile money"}
                 color={Colors.main.CloudGrey}
                 img={require("@/assets/images/orange.png")}
                 icon={"arrow-right-drop-circle-outline"}
+                onChange={() => goForm("Orange Money")}
                 />
                 <CardMethod
                 title={"Moov money"}
@@ -36,6 +38,7 @@ export function PaymentMode({ navigation: { navigate } }:any){
                 color={Colors.main.CloudGrey}
                 img={require("@/assets/images/moov.png")}
                 icon={"arrow-right-drop-circle-outline"}
+                onChange={() => goForm("Moov money")}
                 />
                 <CardMethod
                 title={"MTN MoMo"}
@@ -43,6 +46,7 @@ export function PaymentMode({ navigation: { navigate } }:any){
                 color={Colors.main.CloudGrey}
                 img={require("@/assets/images/mtn.png")}
                 icon={"arrow-right-drop-circle-outline"}
+                onChange={() => goForm("MTN MoMo")}
                 />
                 <CardMethod
                 title={"Wave"}
@@ -50,6 +54,7 @@ export function PaymentMode({ navigation: { navigate } }:any){
                 color={Colors.main.CloudGrey}
                 img={require("@/assets/images/wave.png")}
                 icon={"arrow-right-drop-circle-outline"}
+                onChange={() => goForm("Wave")}
                 />
                 <CardMethod
                 title={"Visa"}
@@ -57,6 +62,7 @@ export function PaymentMode({ navigation: { navigate } }:any){
                 color={Colors.main.CloudGrey}
                 img={require("@/assets/images/visa.png")}
                 icon={"arrow-right-drop-circle-outline"}
+                onChange={() => goForm("Visa")}
                 />
                 <CardMethod
                 title={"Master Card"}
@@ -64,13 +70,15 @@ export function PaymentMode({ navigation: { navigate } }:any){
                 color={Colors.main.CloudGrey}
                 img={require("@/assets/images/visa.png")}
                 icon={"arrow-right-drop-circle-outline"}
+                onChange={() => goForm("Master Card")}
                 />
 
-            <View style={{justifyContent: 'center',alignItems:'center',marginTop:45}}>
-                <ButtonText  text={"Annuler"} textColor={Colors.main.red}/>
+            <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 30}}>
+                <ButtonText text={"Annuler"} textColor={Colors.main.red} onChange={goBack}/>
             </View>
-                
+
             </View>
+            </ScrollView>
         </>
     )
 }

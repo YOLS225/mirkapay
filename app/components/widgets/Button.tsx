@@ -13,7 +13,7 @@ export function MyButton({icon,text,textColor,color,onChange,size}:any) {
                 {text}
             </Button>
         </Pressable>
-        
+
     )
 }
 
@@ -25,7 +25,7 @@ export function ButtonText({ text, textColor, color, onChange }:any) {
           icon=""
           mode="contained"
           onPress={onChange}
-          labelStyle={{ color: textColor }} 
+          labelStyle={{ color: textColor }}
         >
           {text}
         </Button>
