@@ -1,5 +1,10 @@
 # MirkaPay
 
+![React Native](https://img.shields.io/badge/React_Native-0.74.5-61DAFB?logo=react)
+![Expo](https://img.shields.io/badge/Expo-51-000020?logo=expo)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?logo=typescript)
+![Statut](https://img.shields.io/badge/Statut-POC-orange)
+
 > **⚠️ POC — Proof of Concept**
 > Ce projet est une démonstration technique (preuve de concept). Les données sont fictives, aucun paiement réel n'est effectué et aucune API backend n'est connectée. L'objectif est d'illustrer les flux de navigation, les interfaces utilisateur et l'architecture d'une application de paiement mobile CMU.
 
@@ -10,13 +15,17 @@ Application mobile de paiement des cotisations CMU (Couverture Maladie Universel
 ## Sommaire
 
 - [Aperçu](#aperçu)
+- [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
+- [Prérequis](#prérequis)
 - [Installation](#installation)
 - [Architecture](#architecture)
 - [Navigation](#navigation)
 - [Écrans](#écrans)
 - [Composants](#composants)
 - [Palette de couleurs](#palette-de-couleurs)
+- [Conventions de code](#conventions-de-code)
+- [Licence](#licence)
 
 ---
 
@@ -28,6 +37,24 @@ MirkaPay permet aux assurés CMU de :
 - Suivre leur historique de paiements
 - Visualiser leurs statistiques de cotisations
 - Gérer leur profil
+
+---
+
+## Screenshots
+
+<!-- Ajouter les captures dans assets/screenshots/ -->
+
+| Accueil | Paiement | Historique | Statistiques |
+|---|---|---|---|
+| ![FirstScreen](assets/images/first_screen.png) | ![PaymentMode](assets/images/payment_mode.png) | ![Historique](assets/images/historique.png) | ![Statistiques](assets/images/statistiques.png) |
+
+| Connexion | Profil | Détail paiement | Confirmation |
+|---|---|---|---|
+| ![Login](assets/images/login.png) | ![Profile](assets/images/profile.png) | ![PaymentDetail](assets/images/payment_detail.png) | ![PaymentSuccess](assets/images/payment_success.png) |
+
+| Home | Formulaire de paiement |
+|---|---|
+| ![Home](assets/images/home.png) | ![Payment](assets/images/payment.png) |
 
 ---
 
@@ -43,6 +70,15 @@ MirkaPay permet aux assurés CMU de :
 | React Native SVG | ^15.7.1 | Icônes & graphiques |
 | React Native Safe Area Context | 4.10.5 | Gestion des encoches |
 | TypeScript | ~5.3.3 | Typage statique |
+
+---
+
+## Prérequis
+
+- **Node.js** >= 18
+- **npm** >= 9 (ou yarn)
+- **Expo Go** installé sur votre appareil iOS ou Android ([App Store](https://apps.apple.com/app/expo-go/id982107779) / [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent))
+- Pour émulateur : Android Studio (Android) ou Xcode (iOS, macOS uniquement)
 
 ---
 
@@ -105,7 +141,8 @@ mirkapay/
 │           ├── Statistique.tsx    # Icône statistiques SVG
 │           └── PaymentLogo.tsx    # Icône paiement SVG
 ├── assets/
-│   └── images/                    # Images & logos (orange, moov, mtn, wave, visa…)
+│   ├── images/                    # Images & logos (orange, moov, mtn, wave, visa…)
+│   └── screenshots/               # Captures d'écran (pour le README)
 ├── package.json
 └── tsconfig.json
 ```
@@ -227,3 +264,19 @@ Profile → [Se déconnecter] → FirstScreen (reset pile)
 | `lightPink` | `#FFF5F5` | Fonds d'alertes douces |
 | `white` | `#FFFFFF` | Fonds principaux |
 | `dark` | `#000000` | Textes principaux |
+
+---
+
+## Conventions de code
+
+- **Langage** : TypeScript strict
+- **Styling** : `StyleSheet.create` (React Native natif) — NativeWind non utilisé pour éviter les conflits avec react-native-paper
+- **Composants UI** : react-native-paper pour les éléments interactifs (Button, TextInput, Cards)
+- **Icônes** : composants SVG custom via react-native-svg (pas de bibliothèque d'icônes externe)
+- **Couleurs** : toujours utiliser les tokens de `app/constants/colors.ts`, jamais de valeurs en dur
+
+---
+
+## Licence
+
+Ce projet est un POC à usage démonstratif. Tous droits réservés.
